@@ -22,21 +22,21 @@ class CityViewController: UIViewController {
             }
             print("_____________________________")
             print(_city.name)
-//            Main() {
-                self.cityNameLabel.text = _city.name
-                self.temperatureLabel.text = _city.readableTemperature()
-                self.temperatureLabel.textColor = _city.weather.colorOfWeather()
-                
-                if _city.isRain() {
-                    //First priority
-                    self.weatherImage.image = UIImage.init(named: "rain")
-                } else if _city.isCloudy() {
-                    self.weatherImage.image = UIImage.init(named: "cloud")
-                } else {
-                    self.weatherImage.image = nil
-                }
-                
-//            }
+            
+            self.cityNameLabel.text = _city.name
+            self.temperatureLabel.text = _city.readableTemperature()
+            self.temperatureLabel.textColor = _city.weather.colorOfWeather()
+            
+            if _city.isRain() {
+                //First priority
+                self.weatherImage.image = UIImage.init(named: "rain")
+            } else if _city.isCloudy() {
+                self.weatherImage.image = UIImage.init(named: "cloud")
+            } else {
+                self.weatherImage.image = nil
+            }
+            
+            
         }
     }
     override func viewDidLoad() {

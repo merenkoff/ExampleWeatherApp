@@ -8,6 +8,9 @@
 
 import UIKit
 
+/*!
+ * @class CityDataSource this a manager for Weather API
+ */
 class CityDataSource: NSObject, ICityDataProvider {
     
     var pageData: [String] = ["Kiev,ua", "London,uk", "Tallinn", "Prague"]

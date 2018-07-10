@@ -32,31 +32,29 @@ class CityListController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        guard segue.identifier == "ListOfCities2DetailView",
+            let detailViewController = segue.destination as? DetailViewController,
+            let selectedCity = sender as? Int else {
+                return
+        }
+        let _ = detailViewController.view
+        detailViewController.selectedCity = selectedCity
     }
-    */
-
+ 
 }
 
 extension CityListController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {
-            return
-        }
-        
-        self.present(detailViewController, animated: true, completion: {
-            detailViewController.selectedCity = indexPath.row
-        })
-        
-    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "ListOfCities2DetailView",
+                              sender: indexPath.row)
+        }
+    }
 }
 
 extension CityListController: UITableViewDataSource {
@@ -83,6 +81,4 @@ extension CityListController: UITableViewDataSource {
         
         return cell
     }
-    
-    
 }

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wch-kM-mZf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wch-kM-mZf">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="vlX-5n-CQJ" kind="relationship" relationship="rootViewController" id="j2q-gB-gXp"/>
+                        <segue destination="U3m-AY-6Td" kind="relationship" relationship="rootViewController" id="1Wn-56-bjD"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hRr-fI-MrV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -83,11 +81,12 @@
                     <navigationItem key="navigationItem" id="88m-Q2-d1L"/>
                     <connections>
                         <outlet property="_tableView" destination="0bu-bW-esU" id="Tf5-8A-xiI"/>
+                        <segue destination="703-4V-yAM" kind="show" identifier="ListOfCities2DetailView" id="kdS-mC-IC4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7h-RB-ivn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-996" y="-494"/>
+            <point key="canvasLocation" x="-829" y="-244"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="clB-vc-fyl">
@@ -199,6 +198,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GmD-Rr-ZGN" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="581" y="-258"/>
+        </scene>
+        <!--camera-->
+        <scene sceneID="SDY-kH-6D6">
+            <objects>
+                <viewController title="camera" id="U3m-AY-6Td" customClass="CameraViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vo8-pa-RcU"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZIg-go-cc6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QfD-z0-bRv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J5f-e8-zAW">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="pB4-kr-cDg" appends="YES" id="uMZ-h9-wTt"/>
+                                </connections>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap anywhere to take photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0K-f1-2Ni">
+                                <rect key="frame" x="24" y="532" width="272" height="16"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="ZIg-go-cc6" firstAttribute="top" secondItem="J5f-e8-zAW" secondAttribute="bottom" id="1YN-yT-bpE"/>
+                            <constraint firstItem="J5f-e8-zAW" firstAttribute="top" secondItem="vo8-pa-RcU" secondAttribute="bottom" id="5C5-bP-f3H"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="N0K-f1-2Ni" secondAttribute="trailing" constant="8" id="b5D-sD-5HB"/>
+                            <constraint firstItem="J5f-e8-zAW" firstAttribute="centerX" secondItem="QfD-z0-bRv" secondAttribute="centerX" id="bOv-Tx-9kp"/>
+                            <constraint firstAttribute="trailing" secondItem="J5f-e8-zAW" secondAttribute="trailing" id="fxE-Qv-Es4"/>
+                            <constraint firstItem="ZIg-go-cc6" firstAttribute="top" secondItem="N0K-f1-2Ni" secondAttribute="bottom" constant="20" id="lFH-BW-Zcz"/>
+                            <constraint firstItem="N0K-f1-2Ni" firstAttribute="leading" secondItem="QfD-z0-bRv" secondAttribute="leadingMargin" constant="8" id="tKN-W1-ONh"/>
+                            <constraint firstItem="J5f-e8-zAW" firstAttribute="leading" secondItem="QfD-z0-bRv" secondAttribute="leading" id="wNN-cR-zbP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zun-sM-ex7"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Camera" id="Hfq-xT-kWS"/>
+                    <connections>
+                        <outlet property="cameraView" destination="J5f-e8-zAW" id="Oh9-nq-sXb"/>
+                        <segue destination="vlX-5n-CQJ" kind="show" identifier="CameraView2ListOfCities" id="nUB-cD-41e"/>
+                    </connections>
+                </viewController>
+                <tapGestureRecognizer id="pB4-kr-cDg">
+                    <connections>
+                        <action selector="tapGestureAction:" destination="U3m-AY-6Td" id="G5E-6v-Zdu"/>
+                        <outlet property="delegate" destination="U3m-AY-6Td" id="9Ps-4e-a8E"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0VX-ch-9TO" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2222" y="464"/>
         </scene>
     </scenes>
 </document>

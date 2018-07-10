@@ -8,6 +8,10 @@
 
 import Alamofire
 
+
+/*!
+ * @class APIClient singleton for acess a REST API
+ */
 class APIClient {
     enum IntParsingError: Error {
         case notParsed
