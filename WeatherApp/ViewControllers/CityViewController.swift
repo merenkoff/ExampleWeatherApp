@@ -16,27 +16,8 @@ class CityViewController: UIViewController {
     @IBOutlet weak var weatherImage: UIImageView!
 
     var city: City? {
-        willSet {
-            guard let _city = newValue else {
-                return;
-            }
-            print("_____________________________")
-            print(_city.name)
-            
-            self.cityNameLabel.text = _city.name
-            self.temperatureLabel.text = _city.readableTemperature()
-            self.temperatureLabel.textColor = _city.weather.colorOfWeather()
-            
-            if _city.isRain() {
-                //First priority
-                self.weatherImage.image = UIImage.init(named: "rain")
-            } else if _city.isCloudy() {
-                self.weatherImage.image = UIImage.init(named: "cloud")
-            } else {
-                self.weatherImage.image = nil
-            }
-            
-            
+        didSet {
+            self.updatedCity()
         }
     }
     override func viewDidLoad() {
@@ -49,13 +30,35 @@ class CityViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    fileprivate func updatedCity() {
+        guard let _city = city else {
+            return;
+        }
+        
+        print("_____________________________")
+        print(_city.name)
+        
+        self.cityNameLabel.text = _city.name
+        self.temperatureLabel.text = _city.readableTemperature()
+        self.temperatureLabel.textColor = _city.weather.colorOfWeather()
+        
+        if _city.isRain() {
+            //First priority
+            self.weatherImage.image = UIImage.init(named: "rain")
+        } else if _city.isCloudy() {
+            self.weatherImage.image = UIImage.init(named: "cloud")
+        } else {
+            self.weatherImage.image = nil
+        }
+    }
+    
     fileprivate func setupWeatherUpdater() {
         
         let reachability = Reachability()!
         
         reachability.whenReachable = { reachability in
             if reachability.connection != .none {
-                
+               //Update city from server
             }
         }
         reachability.whenUnreachable = { _ in
@@ -70,14 +73,12 @@ class CityViewController: UIViewController {
             print("Unable to start notifier")
         }
         
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.cityNameLabel.text = dataObject
-        
-//        setupWeatherUpdater()
+
+        setupWeatherUpdater()
         
     }
 

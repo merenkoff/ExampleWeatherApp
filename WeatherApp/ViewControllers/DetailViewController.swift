@@ -68,8 +68,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDelegate {
         // In more complex implementations, the model controller may be passed to the view controller.
         if _modelController == nil {
             _modelController = ModelController.init(withPageControl: pageControl)
-            let cityDataSource = CityDataSource.init()
-            _modelController?.dataSource = cityDataSource
+            _modelController?.dataSource = CityDataSource.shared
         }
         return _modelController!
     }

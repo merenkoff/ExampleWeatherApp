@@ -30,5 +30,8 @@ class CityDataSource: NSObject, ICityDataProvider {
         }
     }
     
+    // MARK: - Properties
+    
+    static let shared = CityDataSource()
 
 }

@@ -21,8 +21,7 @@ class CityListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let cityDataSource = CityDataSource.init()
-        self.dataSource = cityDataSource
+        self.dataSource = CityDataSource.shared
         
         // Do any additional setup after loading the view.
     }

@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 import MFCameraManager
-import AWSRekognition
+
 
 class CameraViewController: UIViewController {
 
@@ -112,39 +112,17 @@ extension CameraViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "CameraView2ListOfCities",
-            let imageViewController = segue.destination as? CityListController,
-            let image = sender as? UIImage else {
+            let listViewController = segue.destination as? CityListController,
+            let user = sender as? User else {
                 return
         }
         
-        let data = UIImagePNGRepresentation(image)
+        /*
+         *       Provide user to next controller
+         */
         
-        guard let targetImage = AWSRekognitionImage(),
-              let sourceImage = AWSRekognitionImage() else {
-            return
-        }
+        //listViewController.user = user
         
-        targetImage.bytes = data
-        sourceImage.bytes = data
-        
-        let rekognition = AWSRekognition.default()
-        
-        let rekognitionRequest = AWSRekognitionCompareFacesRequest.init()!
-        //Saved localy
-        rekognitionRequest.sourceImage = sourceImage
-        //From local camera
-        rekognitionRequest.targetImage = targetImage
-        
-        rekognitionRequest.similarityThreshold = 50
-        
-        
-        
-        rekognition.compareFaces(rekognitionRequest) { (response, error) in
-            print("RESULT = \(response) ")
-        }
-        
-        
-//        imageViewController.image = image
     }
 
 }
@@ -159,10 +137,25 @@ extension CameraViewController {
             guard let croppedImage = croppedImage else {
                 return
             }
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "CameraView2ListOfCities",
-                                  sender: croppedImage)
-            }
+            
+            APIClient.login(face: croppedImage, completion: { (result) in
+                switch result {
+                case .success(let user):
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "CameraView2ListOfCities",
+                                          sender: user)
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    
+                    //TODO: Temporary allways login
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "CameraView2ListOfCities",
+                                          sender: User(id: 101))
+                    }
+                }
+            })
+            
         }
     }
 
