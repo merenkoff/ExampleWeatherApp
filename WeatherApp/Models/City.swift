@@ -11,13 +11,36 @@ import Foundation
 struct City: Codable {
     let id: Int
     let name: String
-//    let weather: Weather?
+    let weather: Weather
+    let weatherTypes: [WeatherType]
+    
+    func isRain() -> Bool {
+        for type in weatherTypes {
+            if type.isRain() {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    func isCloudy() -> Bool {
+        for type in weatherTypes {
+            if type.isCloudy() {
+                return true
+            }
+        }
+        
+        return false
+    }
 }
 
 extension City {
     enum CodingKeys: String, CodingKey {
         case id
         case name
-//        case weather = "main"
+        case weather = "main"
+        case weatherTypes = "weather"
+        
     }
 }

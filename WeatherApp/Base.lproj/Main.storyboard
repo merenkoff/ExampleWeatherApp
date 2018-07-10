@@ -60,7 +60,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="214" height="380"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cF2-Le-7mQ">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cF2-Le-7mQ">
                                 <rect key="frame" x="20" y="0.0" width="174" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="RFk-SP-tco"/>
@@ -71,7 +71,23 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1b-V9-EN7">
                                 <rect key="frame" x="20" y="25" width="174" height="341"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0Ij-Mo-vx3">
+                                        <rect key="frame" x="0.0" y="5" width="174" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="KIu-hS-WFf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="0Ij-Mo-vx3" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" id="5ff-D2-L5t"/>
+                                    <constraint firstAttribute="trailing" secondItem="0Ij-Mo-vx3" secondAttribute="trailing" id="YAV-yr-i6p"/>
+                                    <constraint firstItem="0Ij-Mo-vx3" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="5" id="qI4-Il-kwK"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.97826086960000003" green="0.91848131079999995" blue="0.73914263440000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -88,7 +104,8 @@
                     </view>
                     <size key="freeformSize" width="214" height="380"/>
                     <connections>
-                        <outlet property="dataLabel" destination="cF2-Le-7mQ" id="3EH-BK-JV6"/>
+                        <outlet property="cityNameLabel" destination="cF2-Le-7mQ" id="pgL-Pd-3m4"/>
+                        <outlet property="temperatureLabel" destination="0Ij-Mo-vx3" id="cPX-ex-BJy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GmD-Rr-ZGN" sceneMemberID="firstResponder"/>

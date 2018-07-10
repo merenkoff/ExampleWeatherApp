@@ -18,6 +18,8 @@ struct K {
         static let city = "q="
         static let appid = "appid="
     }
+    
+    static let kelvinConversion = 273.15
 }
 
 enum HTTPHeaderField: String {

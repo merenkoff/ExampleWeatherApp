@@ -20,16 +20,6 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
         super.viewDidLoad()
         
         setupPageController()
-        
-        APIClient.weather(city: "Kiev,ua") { result in
-            switch result {
-            case .success(let city):
-                print("_____________________________")
-                print(city.name)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -30,7 +30,8 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
         let dateFormatter = DateFormatter()
         
         pageControl = withPageControl
-        pageData = dateFormatter.monthSymbols
+        
+        pageData = ["Kiev,ua", "London,uk", "Tallinn", "Prague"]
         
         if let _pageControl = pageControl {
             _pageControl.numberOfPages = pageData.count

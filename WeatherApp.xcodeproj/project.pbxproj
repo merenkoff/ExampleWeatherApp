@@ -21,6 +21,7 @@
 		A010E36520F4C8710051BE8E /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010E36120F4C8700051BE8E /* City.swift */; };
 		A010E36720F4C8710051BE8E /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010E36320F4C8710051BE8E /* Weather.swift */; };
 		A010E36920F4C9000051BE8E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010E36820F4C9000051BE8E /* Constants.swift */; };
+		A09D777F20F4EF230095CD72 /* WeatherType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D777E20F4EF230095CD72 /* WeatherType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		A010E36120F4C8700051BE8E /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		A010E36320F4C8710051BE8E /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		A010E36820F4C9000051BE8E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A09D777E20F4EF230095CD72 /* WeatherType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherType.swift; sourceTree = "<group>"; };
 		BEBD272EDE352D33AE3E96F1 /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +156,7 @@
 			children = (
 				A010E36120F4C8700051BE8E /* City.swift */,
 				A010E36320F4C8710051BE8E /* Weather.swift */,
+				A09D777E20F4EF230095CD72 /* WeatherType.swift */,
 			);
 			name = Models;
 			path = WeatherApp/Models;
@@ -301,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A09D777F20F4EF230095CD72 /* WeatherType.swift in Sources */,
 				A010E36920F4C9000051BE8E /* Constants.swift in Sources */,
 				A010E33920F4B6A50051BE8E /* RootViewController.swift in Sources */,
 				A010E35E20F4C8050051BE8E /* APIRouter.swift in Sources */,
@@ -474,7 +478,10 @@
 				DEVELOPMENT_TEAM = S33B5C9ZA4;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergeime.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -491,7 +498,10 @@
 				DEVELOPMENT_TEAM = S33B5C9ZA4;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergeime.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -507,7 +517,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S33B5C9ZA4;
 				INFOPLIST_FILE = WeatherAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergeime.WeatherAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -524,7 +538,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S33B5C9ZA4;
 				INFOPLIST_FILE = WeatherAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergeime.WeatherAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
