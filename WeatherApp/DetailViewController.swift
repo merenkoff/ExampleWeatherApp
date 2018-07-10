@@ -15,11 +15,22 @@ class DetailViewController: UIViewController, UIPageViewControllerDelegate {
     
     
     var pageViewController: UIPageViewController?
-   
+    var selectedCity : Int = 0 {
+        didSet{
+            if pageViewController == nil {
+                for i in 0...selectedCity {
+                    //Prefetch results
+                    self.modelController.viewControllerAtIndex(i, storyboard: self.storyboard!)
+                }
+                
+                setupPageController()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupPageController()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,13 +39,12 @@ class DetailViewController: UIViewController, UIPageViewControllerDelegate {
     }
 
     
-    fileprivate func setupPageController() {
-        // Do any additional setup after loading the view, typically from a nib.
-        // Configure the page view controller and add it as a child view controller.
+    private func setupPageController() {
+        
         self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         //        self.pageViewController!.delegate = self
         
-        let startingViewController: CityViewController = self.modelController.viewControllerAtIndex(0, storyboard: self.storyboard!)!
+        let startingViewController: CityViewController = self.modelController.viewControllerAtIndex(self.selectedCity, storyboard: self.storyboard!)!
         let viewControllers = [startingViewController]
         self.pageViewController!.setViewControllers(viewControllers, direction: .forward, animated: false, completion: {done in })
         

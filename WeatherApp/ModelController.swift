@@ -63,6 +63,7 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
         }
         
         dataSource.getCityWeather(at: index) { (_city) in
+            let _ = dataViewController.view
             dataViewController.city = _city
         }
         

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="703-4V-yAM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wch-kM-mZf">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,6 +12,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="xWO-vC-dY6">
+            <objects>
+                <navigationController id="wch-kM-mZf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aoG-oM-0sX">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vlX-5n-CQJ" kind="relationship" relationship="rootViewController" id="j2q-gB-gXp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hRr-fI-MrV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1899" y="-494"/>
+        </scene>
         <!--City List Controller-->
         <scene sceneID="AWh-yE-Gqp">
             <objects>
@@ -21,10 +37,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0bu-bW-esU">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cityCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="W4G-hf-DJp" detailTextLabel="yzU-d7-zSD" style="IBUITableViewCellStyleValue1" id="Lfo-fM-X3y">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cityCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cityCell" textLabel="W4G-hf-DJp" detailTextLabel="yzU-d7-zSD" style="IBUITableViewCellStyleValue1" id="Lfo-fM-X3y">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lfo-fM-X3y" id="eOg-fB-JOj">
@@ -64,6 +80,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QVU-Io-w5Y"/>
                     </view>
+                    <navigationItem key="navigationItem" id="88m-Q2-d1L"/>
                     <connections>
                         <outlet property="_tableView" destination="0bu-bW-esU" id="Tf5-8A-xiI"/>
                     </connections>
@@ -75,17 +92,17 @@
         <!--Detail View Controller-->
         <scene sceneID="clB-vc-fyl">
             <objects>
-                <viewController id="703-4V-yAM" customClass="DetailViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="currentContext" id="703-4V-yAM" customClass="DetailViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="502-Ir-ELC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0pS-o0-05p">
-                                <rect key="frame" x="53.5" y="94.5" width="213" height="379"/>
+                                <rect key="frame" x="32" y="84" width="256" height="336"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="X7J-yz-nJ2">
-                                <rect key="frame" x="53.5" y="481" width="213" height="37"/>
+                                <rect key="frame" x="32" y="427.5" width="256" height="37"/>
                                 <connections>
                                     <action selector="pageChanged:" destination="703-4V-yAM" eventType="valueChanged" id="vaL-ON-6JG"/>
                                 </connections>
@@ -98,11 +115,12 @@
                             <constraint firstItem="X7J-yz-nJ2" firstAttribute="leading" secondItem="0pS-o0-05p" secondAttribute="leading" id="GOM-Bc-dij"/>
                             <constraint firstItem="X7J-yz-nJ2" firstAttribute="trailing" secondItem="0pS-o0-05p" secondAttribute="trailing" id="Xei-wL-11H"/>
                             <constraint firstItem="0pS-o0-05p" firstAttribute="centerX" secondItem="502-Ir-ELC" secondAttribute="centerX" id="egu-JD-MiP"/>
-                            <constraint firstItem="0pS-o0-05p" firstAttribute="width" secondItem="502-Ir-ELC" secondAttribute="width" multiplier="2/3" id="kFy-tv-JDu"/>
+                            <constraint firstItem="0pS-o0-05p" firstAttribute="width" secondItem="502-Ir-ELC" secondAttribute="width" multiplier="4/5" id="kFy-tv-JDu"/>
                             <constraint firstItem="0pS-o0-05p" firstAttribute="height" secondItem="502-Ir-ELC" secondAttribute="height" multiplier="2/3" id="kU8-kd-aYj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iAZ-4m-2z3"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="pageControl" destination="X7J-yz-nJ2" id="gf5-dg-rmJ"/>
                         <outlet property="slidingView" destination="0pS-o0-05p" id="TS8-x6-bFL"/>

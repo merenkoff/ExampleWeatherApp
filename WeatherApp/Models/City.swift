@@ -14,6 +14,10 @@ struct City: Codable {
     let weather: Weather
     let weatherTypes: [WeatherType]
     
+    func readableTemperature() -> String {
+        return String(format:"%2.2f ˚", self.weather.tempInCelsius())
+    }
+    
     func isRain() -> Bool {
         for type in weatherTypes {
             if type.isRain() {

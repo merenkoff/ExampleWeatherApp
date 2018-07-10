@@ -20,7 +20,10 @@ class CityListController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let cityDataSource = CityDataSource.init()
+        self.dataSource = cityDataSource
+        
         // Do any additional setup after loading the view.
     }
 
@@ -43,7 +46,16 @@ class CityListController: UIViewController {
 }
 
 extension CityListController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {
+            return
+        }
+        
+        self.present(detailViewController, animated: true, completion: {
+            detailViewController.selectedCity = indexPath.row
+        })
+        
+    }
     
 }
 
@@ -57,14 +69,18 @@ extension CityListController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cityCell") as! UITableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cityCell") else {
+            return UITableViewCell()
+        }
+        cell.textLabel?.text = "Loading ..."
+        cell.detailTextLabel?.text = "..."
         
         dataSource?.getCityWeather(at: indexPath.row, completion: { (city) in
             cell.textLabel?.text = city.name
+            cell.detailTextLabel?.text = city.readableTemperature()
+            cell.detailTextLabel?.textColor = city.weather.colorOfWeather()
         })
         
-            
-//        cell.deviceIdentifierLabel.text = dataSource[indexPath.row].deviceName()
         return cell
     }
     
