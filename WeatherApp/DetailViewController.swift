@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RootViewController: UIViewController, UIPageViewControllerDelegate {
+class DetailViewController: UIViewController, UIPageViewControllerDelegate {
 
     @IBOutlet weak var slidingView: UIView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -58,6 +58,8 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
         // In more complex implementations, the model controller may be passed to the view controller.
         if _modelController == nil {
             _modelController = ModelController.init(withPageControl: pageControl)
+            let cityDataSource = CityDataSource.init()
+            _modelController?.dataSource = cityDataSource
         }
         return _modelController!
     }

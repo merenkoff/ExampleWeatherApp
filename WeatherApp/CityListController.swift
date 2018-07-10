@@ -10,6 +10,14 @@ import UIKit
 
 class CityListController: UIViewController {
 
+    @IBOutlet weak var _tableView: UITableView!
+    
+    var dataSource : ICityDataProvider? {
+        didSet {
+            _tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +29,7 @@ class CityListController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
     // MARK: - Navigation
 
@@ -32,4 +40,33 @@ class CityListController: UIViewController {
     }
     */
 
+}
+
+extension CityListController: UITableViewDelegate {
+    
+    
+}
+
+extension CityListController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let dataSource = self.dataSource else {
+            return 0
+        }
+        
+        return dataSource.numberOfCities()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cityCell") as! UITableViewCell
+        
+        dataSource?.getCityWeather(at: indexPath.row, completion: { (city) in
+            cell.textLabel?.text = city.name
+        })
+        
+            
+//        cell.deviceIdentifierLabel.text = dataSource[indexPath.row].deviceName()
+        return cell
+    }
+    
+    
 }

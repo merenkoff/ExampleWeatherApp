@@ -7,14 +7,36 @@
 //
 
 import UIKit
+import Reachability
 
 class CityViewController: UIViewController {
 
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
-    
-    var dataObject: String = ""
+    @IBOutlet weak var weatherImage: UIImageView!
 
+    var city: City? {
+        didSet {
+            guard let city = city else {
+                return;
+            }
+            print("_____________________________")
+            print(city.name)
+            
+            self.cityNameLabel.text = city.name
+            self.temperatureLabel.text = String(format:"%2.2f ˚", city.weather.tempInCelsius())
+            self.temperatureLabel.textColor = city.weather.colorOfWeather()
+            
+            if city.isRain() {
+                //First priority
+                self.weatherImage.image = UIImage.init(named: "rain")
+            } else if city.isCloudy() {
+                self.weatherImage.image = UIImage.init(named: "cloud")
+            } else {
+                self.weatherImage.image = nil
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -25,25 +47,35 @@ class CityViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.cityNameLabel.text = dataObject
+    fileprivate func setupWeatherUpdater() {
         
-        APIClient.weather(city: dataObject) { result in
-            switch result {
-            case .success(let city):
-                print("_____________________________")
-                print(city.name)
+        let reachability = Reachability()!
+        
+        reachability.whenReachable = { reachability in
+            if reachability.connection != .none {
                 
-                self.cityNameLabel.text = city.name
-                self.temperatureLabel.text = String(format:"%2.2f ˚", city.weather.tempInCelsius())
-                self.temperatureLabel.textColor = city.weather.colorOfWeather()
-                
-                
-            case .failure(let error):
-                print(error.localizedDescription)
             }
         }
+        reachability.whenUnreachable = { _ in
+            print("Not reachable")
+            self.temperatureLabel.text = "No internet!"
+            self.weatherImage.image = nil
+        }
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        self.cityNameLabel.text = dataObject
+        
+//        setupWeatherUpdater()
         
     }
 

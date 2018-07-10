@@ -20,40 +20,60 @@ import UIKit
 
 class ModelController: NSObject, UIPageViewControllerDataSource {
 
-    var pageData: [String] = []
+    
     var pageControl : UIPageControl?
-
-
-    init(withPageControl : UIPageControl!) {
-        super.init()
-        // Create the data model.
-        let dateFormatter = DateFormatter()
-        
-        pageControl = withPageControl
-        
-        pageData = ["Kiev,ua", "London,uk", "Tallinn", "Prague"]
-        
-        if let _pageControl = pageControl {
-            _pageControl.numberOfPages = pageData.count
+    
+    var dataSource : ICityDataProvider? {
+        didSet {
+            if let _pageControl = pageControl,
+                let _dataSource = dataSource {
+                _pageControl.numberOfPages = _dataSource.numberOfCities()
+            }
         }
     }
 
+    init(withPageControl : UIPageControl!) {
+        super.init()
+
+        pageControl = withPageControl
+        
+    }
+
+    var indexedControllers = [UIViewController]()
+    
     func viewControllerAtIndex(_ index: Int, storyboard: UIStoryboard) -> CityViewController? {
-        // Return the data view controller for the given index.
-        if (self.pageData.count == 0) || (index >= self.pageData.count) {
+        guard let dataSource = self.dataSource else {
+            return nil
+        }
+        
+        if (dataSource.numberOfCities() == 0) || (index >= dataSource.numberOfCities()) {
             return nil
         }
 
         // Create a new view controller and pass suitable data.
         let dataViewController = storyboard.instantiateViewController(withIdentifier: "CityViewController") as! CityViewController
-        dataViewController.dataObject = self.pageData[index]
+        
+        //TODO: Provide data here
+        
+        //dataViewController.dataObject = self.pageData[index]
+        if indexedControllers.count - 1 < index {
+            indexedControllers.append(dataViewController)
+        } else {
+            indexedControllers[index] = dataViewController
+        }
+        
+        dataSource.getCityWeather(at: index) { (_city) in
+            dataViewController.city = _city
+        }
+        
         return dataViewController
     }
 
     func indexOfViewController(_ viewController: CityViewController) -> Int {
         // Return the index of the given data view controller.
         // For simplicity, this implementation uses a static array of model objects and the view controller stores the model object; you can therefore use the model object to identify the index.
-        return pageData.index(of: viewController.dataObject) ?? NSNotFound
+        
+        return indexedControllers.index(of: viewController) ?? NSNotFound
     }
 
     // MARK: - Page View Controller Data Source
@@ -69,13 +89,18 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let dataSource = self.dataSource else {
+            return nil
+        }
+        
         var index = self.indexOfViewController(viewController as! CityViewController)
+        
         if index == NSNotFound {
             return nil
         }
         
         index += 1
-        if index == self.pageData.count {
+        if index == dataSource.numberOfCities() {
             return nil
         }
         return self.viewControllerAtIndex(index, storyboard: viewController.storyboard!)
