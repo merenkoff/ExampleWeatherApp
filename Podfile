@@ -4,4 +4,5 @@ use_frameworks!
 
 target 'WeatherApp' do
     pod 'Alamofire', '~> 4.7'
+    pod 'ReachabilitySwift'
 end
