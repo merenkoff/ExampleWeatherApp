@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import MFCameraManager
+import AWSRekognition
 
 class CameraViewController: UIViewController {
 
@@ -115,6 +116,33 @@ extension CameraViewController {
             let image = sender as? UIImage else {
                 return
         }
+        
+        let data = UIImagePNGRepresentation(image)
+        
+        guard let targetImage = AWSRekognitionImage(),
+              let sourceImage = AWSRekognitionImage() else {
+            return
+        }
+        
+        targetImage.bytes = data
+        sourceImage.bytes = data
+        
+        let rekognition = AWSRekognition.default()
+        
+        let rekognitionRequest = AWSRekognitionCompareFacesRequest.init()!
+        //Saved localy
+        rekognitionRequest.sourceImage = sourceImage
+        //From local camera
+        rekognitionRequest.targetImage = targetImage
+        
+        rekognitionRequest.similarityThreshold = 50
+        
+        
+        
+        rekognition.compareFaces(rekognitionRequest) { (response, error) in
+            print("RESULT = \(response) ")
+        }
+        
         
 //        imageViewController.image = image
     }
