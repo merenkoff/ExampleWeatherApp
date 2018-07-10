@@ -1,5 +1,5 @@
 //
-//  DataViewController.swift
+//  CityViewController.swift
 //  WeatherApp
 //
 //  Created by Serhii Merenkov on 7/10/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DataViewController: UIViewController {
+class CityViewController: UIViewController {
 
     @IBOutlet weak var dataLabel: UILabel!
     var dataObject: String = ""

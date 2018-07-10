@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		A010E33720F4B6A50051BE8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010E33620F4B6A50051BE8E /* AppDelegate.swift */; };
 		A010E33920F4B6A50051BE8E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010E33820F4B6A50051BE8E /* RootViewController.swift */; };
-		A010E33B20F4B6A50051BE8E /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010E33A20F4B6A50051BE8E /* DataViewController.swift */; };
+		A010E33B20F4B6A50051BE8E /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010E33A20F4B6A50051BE8E /* CityViewController.swift */; };
 		A010E33D20F4B6A50051BE8E /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010E33C20F4B6A50051BE8E /* ModelController.swift */; };
 		A010E34020F4B6A50051BE8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A010E33E20F4B6A50051BE8E /* Main.storyboard */; };
 		A010E34220F4B6A90051BE8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A010E34120F4B6A90051BE8E /* Assets.xcassets */; };
@@ -31,7 +31,7 @@
 		A010E33320F4B6A50051BE8E /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A010E33620F4B6A50051BE8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A010E33820F4B6A50051BE8E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		A010E33A20F4B6A50051BE8E /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		A010E33A20F4B6A50051BE8E /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
 		A010E33C20F4B6A50051BE8E /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		A010E33F20F4B6A50051BE8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A010E34120F4B6A90051BE8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 			children = (
 				A010E33620F4B6A50051BE8E /* AppDelegate.swift */,
 				A010E33820F4B6A50051BE8E /* RootViewController.swift */,
-				A010E33A20F4B6A50051BE8E /* DataViewController.swift */,
+				A010E33A20F4B6A50051BE8E /* CityViewController.swift */,
 				A010E33C20F4B6A50051BE8E /* ModelController.swift */,
 				A010E33E20F4B6A50051BE8E /* Main.storyboard */,
 				A010E34120F4B6A90051BE8E /* Assets.xcassets */,
@@ -205,7 +205,7 @@
 			files = (
 				A010E33920F4B6A50051BE8E /* RootViewController.swift in Sources */,
 				A010E33D20F4B6A50051BE8E /* ModelController.swift in Sources */,
-				A010E33B20F4B6A50051BE8E /* DataViewController.swift in Sources */,
+				A010E33B20F4B6A50051BE8E /* CityViewController.swift in Sources */,
 				A010E33720F4B6A50051BE8E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +369,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S33B5C9ZA4;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -376,7 +377,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergeime.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -387,6 +388,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S33B5C9ZA4;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -394,7 +396,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergeime.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
