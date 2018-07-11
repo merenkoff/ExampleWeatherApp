@@ -3,30 +3,39 @@ PODS:
   - AWSCore (2.6.21)
   - AWSRekognition (2.6.21):
     - AWSCore (= 2.6.21)
+  - AWSS3 (2.6.21):
+    - AWSCore (= 2.6.21)
   - MFCameraManager (1.1.3)
   - ReachabilitySwift (4.1.0)
+  - RSLoadingView (1.1.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - AWSRekognition
+  - AWSS3
   - MFCameraManager
   - ReachabilitySwift
+  - RSLoadingView
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - AWSCore
     - AWSRekognition
+    - AWSS3
     - MFCameraManager
     - ReachabilitySwift
+    - RSLoadingView
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AWSCore: a1ff1d32ea7af235fe64be301c204b34cb1f9f83
   AWSRekognition: 6947c468a07e391d88e8cf4f7d9aa3b21c9f6aad
+  AWSS3: e6b042fdbf092ffd49bf7998b3fd5be729949ee7
   MFCameraManager: f1bb1c508999d63dff3baf0c72c4ad37dd68f3cf
   ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
+  RSLoadingView: fdfeee9968b6dad2559169a97da0ad2580371f3a
 
-PODFILE CHECKSUM: 3038e439db0b86186e8183238266ecd6a02c4551
+PODFILE CHECKSUM: a14c2bc1aed7fac1d705dc830534e1d20ccc99de
 
 COCOAPODS: 1.5.0

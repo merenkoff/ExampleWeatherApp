@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 import MFCameraManager
-
+import RSLoadingView
 
 class CameraViewController: UIViewController {
 
@@ -61,7 +61,9 @@ class CameraViewController: UIViewController {
         let this = CATextLayer()
         return this
     }()
-
+    
+    var delegate: ILoginProvider?
+    var isLogin: Bool?
 }
 
 extension CameraViewController {
@@ -110,21 +112,6 @@ extension CameraViewController {
         drawOverRectView()
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "CameraView2ListOfCities",
-            let listViewController = segue.destination as? CityListController,
-            let user = sender as? User else {
-                return
-        }
-        
-        /*
-         *       Provide user to next controller
-         */
-        
-        //listViewController.user = user
-        
-    }
-
 }
 
 extension CameraViewController {
@@ -138,24 +125,9 @@ extension CameraViewController {
                 return
             }
             
-            APIClient.login(face: croppedImage, completion: { (result) in
-                switch result {
-                case .success(let user):
-                    DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "CameraView2ListOfCities",
-                                          sender: user)
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                    
-                    //TODO: Temporary allways login
-                    DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "CameraView2ListOfCities",
-                                          sender: User(id: 101))
-                    }
-                }
+            self.dismiss(animated: true, completion: {
+                self.delegate?.proceed(face: croppedImage, isLogin: self.isLogin!)
             })
-            
         }
     }
 

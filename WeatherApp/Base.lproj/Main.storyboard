@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="U3m-AY-6Td" kind="relationship" relationship="rootViewController" id="1Wn-56-bjD"/>
+                        <segue destination="djG-YO-xiC" kind="relationship" relationship="rootViewController" id="Jrd-sl-oo1"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hRr-fI-MrV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -199,6 +199,57 @@
             </objects>
             <point key="canvasLocation" x="581" y="-258"/>
         </scene>
+        <!--Login Signup View Controller-->
+        <scene sceneID="MNu-re-cRs">
+            <objects>
+                <viewController id="djG-YO-xiC" customClass="LoginSignupViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Lk-J6-LIr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkF-vQ-bLz">
+                                <rect key="frame" x="0.0" y="164" width="320" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="MRH-aM-MiN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Sign-up"/>
+                                <connections>
+                                    <segue destination="U3m-AY-6Td" kind="presentation" identifier="LoginView2SignUp" id="4eG-SK-2C9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDr-9r-Bm6">
+                                <rect key="frame" x="0.0" y="263" width="320" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="dTg-lu-ppx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <segue destination="U3m-AY-6Td" kind="presentation" identifier="LoginView2Login" id="XvW-2Q-RZH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kDr-9r-Bm6" firstAttribute="trailing" secondItem="gkF-vQ-bLz" secondAttribute="trailing" id="88S-lX-Spr"/>
+                            <constraint firstItem="gkF-vQ-bLz" firstAttribute="leading" secondItem="ID6-Fo-x7a" secondAttribute="leading" id="9Uz-Am-mJB"/>
+                            <constraint firstItem="kDr-9r-Bm6" firstAttribute="top" secondItem="gkF-vQ-bLz" secondAttribute="bottom" constant="57" id="9vL-gS-VE9"/>
+                            <constraint firstItem="kDr-9r-Bm6" firstAttribute="leading" secondItem="gkF-vQ-bLz" secondAttribute="leading" id="aPR-hv-axX"/>
+                            <constraint firstItem="gkF-vQ-bLz" firstAttribute="top" secondItem="ID6-Fo-x7a" secondAttribute="top" constant="100" id="pFm-SC-5XB"/>
+                            <constraint firstItem="ID6-Fo-x7a" firstAttribute="trailing" secondItem="gkF-vQ-bLz" secondAttribute="trailing" id="qsA-SO-VGg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ID6-Fo-x7a"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ln5-Ic-C54"/>
+                    <connections>
+                        <segue destination="vlX-5n-CQJ" kind="show" identifier="LoginView2ListOfCities" id="Pbg-6v-oZo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dUT-z3-Nt9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1899" y="315"/>
+        </scene>
         <!--camera-->
         <scene sceneID="SDY-kH-6D6">
             <objects>
@@ -212,7 +263,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J5f-e8-zAW">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -242,7 +293,6 @@
                     <navigationItem key="navigationItem" title="Camera" id="Hfq-xT-kWS"/>
                     <connections>
                         <outlet property="cameraView" destination="J5f-e8-zAW" id="Oh9-nq-sXb"/>
-                        <segue destination="vlX-5n-CQJ" kind="show" identifier="CameraView2ListOfCities" id="nUB-cD-41e"/>
                     </connections>
                 </viewController>
                 <tapGestureRecognizer id="pB4-kr-cDg">
@@ -253,7 +303,10 @@
                 </tapGestureRecognizer>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0VX-ch-9TO" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2222" y="464"/>
+            <point key="canvasLocation" x="-1899" y="1187"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="XvW-2Q-RZH"/>
+    </inferredMetricsTieBreakers>
 </document>

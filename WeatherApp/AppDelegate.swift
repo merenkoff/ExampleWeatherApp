@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let credentialProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: "YourIdentityPoolId")
-        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialProvider)
+        let credentialProvider = AWSCognitoCredentialsProvider(regionType: .APSoutheast2, identityPoolId: "ap-southeast-2:6293b387-0203-4793-88f2-b871d0cf9f8d")
+        let configuration = AWSServiceConfiguration(region: .APSoutheast2, credentialsProvider: credentialProvider)
         AWSServiceManager.default().defaultServiceConfiguration = configuration
 //        AWSRekognition.register(with: configuration!, forKey: "USWest2Rekognition")
         

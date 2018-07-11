@@ -23,6 +23,8 @@
 		A014A76720F5173F00DDBFDF /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A014A76320F5173E00DDBFDF /* CityViewController.swift */; };
 		A014A76820F5173F00DDBFDF /* CityListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A014A76420F5173E00DDBFDF /* CityListController.swift */; };
 		A014A76A20F517E200DDBFDF /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A014A76920F517E100DDBFDF /* ModelController.swift */; };
+		A024D8F020F6576900A68886 /* LoginSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024D8EF20F6576900A68886 /* LoginSignupViewController.swift */; };
+		A024D8F220F65B3A00A68886 /* ILoginProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024D8F120F65B3900A68886 /* ILoginProvider.swift */; };
 		A07A9F0620F4FD83005CEDE1 /* ICityDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A9F0520F4FD83005CEDE1 /* ICityDataProvider.swift */; };
 		A07A9F0820F4FEE8005CEDE1 /* CityDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A9F0720F4FEE8005CEDE1 /* CityDataSource.swift */; };
 		A0820CCE20F5FF8D00BAB4CF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0820CCD20F5FF8D00BAB4CF /* User.swift */; };
@@ -61,6 +63,8 @@
 		A014A76320F5173E00DDBFDF /* CityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
 		A014A76420F5173E00DDBFDF /* CityListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListController.swift; sourceTree = "<group>"; };
 		A014A76920F517E100DDBFDF /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		A024D8EF20F6576900A68886 /* LoginSignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSignupViewController.swift; sourceTree = "<group>"; };
+		A024D8F120F65B3900A68886 /* ILoginProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ILoginProvider.swift; sourceTree = "<group>"; };
 		A07A9F0520F4FD83005CEDE1 /* ICityDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICityDataProvider.swift; sourceTree = "<group>"; };
 		A07A9F0720F4FEE8005CEDE1 /* CityDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDataSource.swift; sourceTree = "<group>"; };
 		A0820CCD20F5FF8D00BAB4CF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -175,8 +179,9 @@
 		A014A76020F5173E00DDBFDF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A014A76120F5173E00DDBFDF /* DetailViewController.swift */,
+				A024D8EF20F6576900A68886 /* LoginSignupViewController.swift */,
 				A014A76220F5173E00DDBFDF /* CameraViewController.swift */,
+				A014A76120F5173E00DDBFDF /* DetailViewController.swift */,
 				A014A76320F5173E00DDBFDF /* CityViewController.swift */,
 				A014A76420F5173E00DDBFDF /* CityListController.swift */,
 			);
@@ -187,6 +192,7 @@
 		A07A9F0420F4FD83005CEDE1 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A024D8F120F65B3900A68886 /* ILoginProvider.swift */,
 				A07A9F0520F4FD83005CEDE1 /* ICityDataProvider.swift */,
 				A07A9F0720F4FEE8005CEDE1 /* CityDataSource.swift */,
 				A014A76920F517E100DDBFDF /* ModelController.swift */,
@@ -321,16 +327,20 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSRekognition/AWSRekognition.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/MFCameraManager/MFCameraManager.framework",
+				"${BUILT_PRODUCTS_DIR}/RSLoadingView/RSLoadingView.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSRekognition.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MFCameraManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSLoadingView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,8 +363,10 @@
 				A014A76A20F517E200DDBFDF /* ModelController.swift in Sources */,
 				A07A9F0620F4FD83005CEDE1 /* ICityDataProvider.swift in Sources */,
 				A010E36720F4C8710051BE8E /* Weather.swift in Sources */,
+				A024D8F020F6576900A68886 /* LoginSignupViewController.swift in Sources */,
 				A0820CCE20F5FF8D00BAB4CF /* User.swift in Sources */,
 				A010E35D20F4C8050051BE8E /* APIClient.swift in Sources */,
+				A024D8F220F65B3A00A68886 /* ILoginProvider.swift in Sources */,
 				A014A76720F5173F00DDBFDF /* CityViewController.swift in Sources */,
 				A014A76620F5173F00DDBFDF /* CameraViewController.swift in Sources */,
 				A010E33720F4B6A50051BE8E /* AppDelegate.swift in Sources */,
